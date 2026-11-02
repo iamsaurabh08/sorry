@@ -1,0 +1,828 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ek Chhoti Si Duniya Meri Doremon Ke Liye ❤️</title>
+
+  <!-- Favicon -->
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🔔</text></svg>">
+
+  <!-- Google Fonts: Caveat, Dancing Script, Outfit, Plus Jakarta Sans, Playfair Display -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@500;600;700&family=Dancing+Script:wght@600;700&family=Outfit:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,400;1,600&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+  <!-- Lucide Icons -->
+  <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.js"></script>
+
+  <!-- Main Stylesheet -->
+  <link rel="stylesheet" href="style.css">
+</head>
+<body class="theme-doremon">
+
+  <!-- CUSTOM MOUSE CURSOR (Desktop only) -->
+  <div class="custom-cursor-dot" id="cursorDot"></div>
+  <div class="custom-cursor-trail" id="cursorTrail"></div>
+
+  <!-- AMBIENT CANVAS (Floating Hearts, Bubbles & Soft Sparkles) -->
+  <canvas id="ambientCanvas"></canvas>
+
+  <!-- PRELOADER -->
+  <div class="site-preloader" id="sitePreloader">
+    <div class="preloader-content">
+      <div class="doremon-bell-loader">
+        <span class="bell-icon">🔔</span>
+        <span class="mini-heart">❤️</span>
+      </div>
+      <p class="preloader-text">Doremon ke liye kuch special khul raha hai... ✨</p>
+    </div>
+  </div>
+
+  <!-- FLOATING NAVIGATION & AUDIO CONTROLS -->
+  <header class="top-nav" id="topNav">
+    <div class="nav-brand">
+      <span class="doremon-bell-pill">🔔</span>
+      <span class="brand-text">Meri Doremon ❤️</span>
+    </div>
+
+    <div class="nav-actions">
+      <!-- Background Music Toggle -->
+      <button class="music-pill" id="musicToggleBtn" title="Play/Mute Music" aria-label="Toggle Music">
+        <div class="sound-bars" id="soundBars">
+          <span class="bar bar-1"></span>
+          <span class="bar bar-2"></span>
+          <span class="bar bar-3"></span>
+          <span class="bar bar-4"></span>
+        </div>
+        <span class="music-label" id="musicLabel">Music: Off</span>
+      </button>
+
+      <!-- Instant Photo & Customizer Button -->
+      <button class="icon-pill" id="openCustomizerBtn" title="Photos ya Name badalna hai?" aria-label="Change Photos">
+        <i data-lucide="image"></i>
+        <span class="pill-text">Photos Badalna</span>
+      </button>
+    </div>
+  </header>
+
+  <!-- QUICK SCENE NAVIGATION DOTS -->
+  <nav class="side-dots-nav" id="sideDotsNav" aria-label="Scene Navigation">
+    <button class="dot-btn active" data-target="scene-1" title="Scene 1: Doremon"><span>Doremon</span></button>
+    <button class="dot-btn" data-target="scene-2" title="Scene 2: Letter"><span>Chhoti Si Baat</span></button>
+    <button class="dot-btn" data-target="scene-angry" title="Scene 3: Gussa Meter"><span>Gussa Meter</span></button>
+    <button class="dot-btn" data-target="scene-garden" title="Scene 4: Phool Garden"><span>Flower Garden</span></button>
+    <button class="dot-btn" data-target="scene-gallery" title="Scene 5: Doremon Gallery"><span>Photo Gallery</span></button>
+    <button class="dot-btn" data-target="scene-gift" title="Scene 6: Secret Gift"><span>Secret Gift</span></button>
+    <button class="dot-btn" data-target="scene-special" title="Scene 7: Why Special"><span>Special Kyun?</span></button>
+    <button class="dot-btn" data-target="scene-question" title="Scene 8: Maan Jaa"><span>Maan Jaa Na</span></button>
+  </nav>
+
+  <!-- ============================================================== -->
+  <!-- MAIN SCENES CONTAINER -->
+  <!-- ============================================================== -->
+  <main class="story-wrapper">
+
+    <!-- ============================================================== -->
+    <!-- SCENE 1: MERI DOREMON ❤️ (HERO SECTION WITH HER PHOTO) -->
+    <!-- ============================================================== -->
+    <section class="scene-section hero-scene" id="scene-1">
+      <div class="scene-ambient-glow glow-pink"></div>
+      <div class="scene-ambient-glow glow-blue"></div>
+
+      <div class="hero-container">
+        <!-- SAUMYA'S GLOWING HERO PORTRAIT FRAME -->
+        <div class="hero-portrait-wrap">
+          <div class="portrait-halo"></div>
+          
+          <!-- Floating sparkles & hearts around her photo -->
+          <div class="orbit-sparkles">
+            <span class="sparkle s-1">✨</span>
+            <span class="sparkle s-2">💖</span>
+            <span class="sparkle s-3">🌸</span>
+            <span class="sparkle s-4">⭐</span>
+            <span class="sparkle s-5">🦋</span>
+          </div>
+
+          <div class="portrait-card" id="heroPortraitCard" role="button" tabindex="0" title="Click to view Saumya in fullscreen">
+            <div class="portrait-inner">
+              <img src="assets/images/hero-saumya.jpg" alt="Saumya - Meri Doremon" id="heroPhotoImg" class="portrait-img" onerror="this.onerror=null; this.src='https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=800&q=80';">
+              <div class="portrait-overlay-shine"></div>
+            </div>
+            
+            <div class="portrait-badge">
+              <span class="badge-bell">🔔</span>
+              <span class="badge-name" id="heroBadgeName">Saumya • Meri Doremon</span>
+              <span class="badge-heart">❤️</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- HERO TEXT CONTENT -->
+        <div class="hero-text-block">
+          <div class="pill-tag">
+            <span class="sparkle-icon">✨</span>
+            <span>Ek Chhoti Si Duniya Meri Sabse Special Dost Ke Liye</span>
+          </div>
+
+          <h1 class="hero-heading">
+            Achha sun na <br>
+            <span class="highlight-doremon">Doremon... 🥺</span>
+          </h1>
+
+          <p class="hero-subtext">
+            Tere liye kuch banaya hai. <br>
+            Ek baar dekh le na ❤️
+          </p>
+
+          <div class="hero-btn-wrap">
+            <button class="btn-main glow-pink-btn" id="startJourneyBtn">
+              <span class="btn-emoji">👀</span>
+              <span class="btn-text">Chal dikha kya banaya hai</span>
+              <span class="btn-shimmer"></span>
+            </button>
+          </div>
+
+          <div class="scroll-indicator">
+            <span class="mouse-icon"><span class="wheel-dot"></span></span>
+            <span class="scroll-label">Ya aaram se neeche scroll kar</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================================================== -->
+    <!-- SCENE 2: EK CHHOTI SI BAAT 💌 (INTERACTIVE ENVELOPE) -->
+    <!-- ============================================================== -->
+    <section class="scene-section letter-scene" id="scene-2">
+      <div class="scene-header text-center">
+        <span class="scene-step-badge">Scene 02</span>
+        <h2 class="scene-title">Ek Chhoti Si Baat 💌</h2>
+        <p class="scene-subtitle">Is dil wale lifafe pe click kar aur dekh isme kya likha hai...</p>
+      </div>
+
+      <div class="envelope-container">
+        <!-- 3D Interactive Envelope -->
+        <div class="envelope-3d" id="envelope3d">
+          <div class="envelope-back-wall"></div>
+
+          <!-- Inside Letter Parchment -->
+          <div class="parchment-sheet" id="parchmentSheet">
+            <div class="parchment-inner">
+              <div class="parchment-top">
+                <span class="doremon-stamp">🔔 For My Doremon</span>
+                <span class="parchment-date">Dil Se</span>
+              </div>
+
+              <h3 class="parchment-dear">Meri Pyari Pagli Saumya,</h3>
+
+              <div class="parchment-body">
+                <div class="typewriter-box" id="letterTypewriterBox">
+                  <!-- Typewritten Hinglish Letter Content -->
+                </div>
+              </div>
+
+              <div class="parchment-bottom">
+                <p class="parchment-signoff">Tera sabse bada sar-dard aur bestie,</p>
+                <div class="parchment-author">
+                  <span id="letterSenderName">Tera Dost</span>
+                  <span class="author-heart">❤️</span>
+                </div>
+              </div>
+
+              <!-- Controls -->
+              <div class="parchment-actions">
+                <button class="mini-text-btn" id="skipTypewriterBtn">Pura Padho</button>
+                <button class="mini-text-btn" id="replayTypewriterBtn">Dobara Padho</button>
+              </div>
+            </div>
+          </div>
+
+          <!-- Front Pocket Shapes -->
+          <div class="envelope-left-fold"></div>
+          <div class="envelope-right-fold"></div>
+          <div class="envelope-bottom-fold"></div>
+
+          <!-- Folding Top Flap -->
+          <div class="envelope-top-flap" id="envelopeTopFlap"></div>
+
+          <!-- Wax / Bell Seal Button -->
+          <div class="doremon-seal-btn" id="doremonSealBtn" role="button" tabindex="0" title="Click to open the letter">
+            <div class="seal-inner">
+              <span class="seal-icon">🔔</span>
+              <span class="seal-prompt">Open Kar ❤️</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="envelope-next-bar" id="envelopeNextBar">
+          <button class="btn-main glow-purple-btn" id="scene2NextBtn">
+            <span>Sach sach bata ek baat... 🥺</span>
+            <i data-lucide="arrow-down" class="inline-icon"></i>
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================================================== -->
+    <!-- SCENE 3: HOW ANGRY ARE YOU GAME? (GUSSA METER 🌡️) -->
+    <!-- ============================================================== -->
+    <section class="scene-section angry-scene" id="scene-angry">
+      <div class="scene-ambient-glow glow-pink-center"></div>
+
+      <div class="angry-game-card glass-card text-center">
+        <span class="scene-step-badge">Scene 03 • Interactive Game</span>
+        
+        <div class="gussa-meter-graphic">
+          <div class="meter-bar-track">
+            <div class="meter-fill" id="meterFill"></div>
+            <div class="meter-needle" id="meterNeedle">😐</div>
+          </div>
+          <div class="meter-labels">
+            <span>Chill 🌸</span>
+            <span>Thoda Sa 😒</span>
+            <span>Danger 😤</span>
+            <span>Blast 😭</span>
+          </div>
+        </div>
+
+        <h2 class="angry-title">
+          Achha Doremon, kitna gussa hai mujhse? 🥺
+        </h2>
+        <p class="angry-subtitle">
+          Sach sach batana, dil pe haath rakh ke!
+        </p>
+
+        <!-- 3 Interactive Choice Buttons -->
+        <div class="angry-buttons-grid">
+          <button class="btn-angry-choice choice-mild" data-level="mild" id="btnAngryMild">
+            <span class="choice-icon">😒</span>
+            <span class="choice-text">Thoda sa 😒</span>
+          </button>
+
+          <button class="btn-angry-choice choice-medium" data-level="medium" id="btnAngryMedium">
+            <span class="choice-icon">😤</span>
+            <span class="choice-text">Bahut zyada 😤</span>
+          </button>
+
+          <button class="btn-angry-choice choice-extreme" data-level="extreme" id="btnAngryExtreme">
+            <span class="choice-icon">😭</span>
+            <span class="choice-text">Baat hi nahi karni 😭</span>
+          </button>
+        </div>
+
+        <!-- Dynamic Cute & Funny Hinglish Response Card -->
+        <div class="angry-response-box" id="angryResponseBox">
+          <div class="response-inner">
+            <span class="response-emoji" id="responseEmoji">🥺</span>
+            <h4 class="response-title" id="responseTitle">Koyi option chun kar dekho toh!</h4>
+            <p class="response-text" id="responseText">Click karo kisi button pe aur dekho mera jawab...</p>
+          </div>
+        </div>
+
+        <div class="angry-footer-cta" id="angryFooterCta" style="display: none;">
+          <button class="btn-main glow-pink-btn" id="angryNextBtn">
+            <span>Aage dekh, tere liye ek garden hai 🌸</span>
+            <i data-lucide="arrow-down" class="inline-icon"></i>
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================================================== -->
+    <!-- SCENE 4: MAGICAL FLOWER GARDEN 🌸 (INTERACTIVE BLOOMING FLOWERS) -->
+    <!-- ============================================================== -->
+    <section class="scene-section garden-scene" id="scene-garden">
+      <div class="scene-ambient-glow glow-lavender-center"></div>
+
+      <div class="garden-wrapper glass-card text-center">
+        <span class="scene-step-badge">Scene 04 • Magical Garden</span>
+        <h2 class="scene-title">Magical Flower Garden For Doremon 🌸</h2>
+        <p class="scene-subtitle">Har phool me tere liye ek pyaara sa message chhupa hai. Click karke khilao!</p>
+
+        <div class="garden-bloom-counter">
+          <span>Flowers Khile: </span>
+          <strong id="gardenBloomedCount">0</strong><span> / 4 🌸</span>
+        </div>
+
+        <!-- 4 Interactive Blooming SVG Flowers Bed -->
+        <div class="garden-flowers-grid" id="gardenFlowersGrid">
+
+          <!-- Flower 1: Rose -->
+          <div class="garden-flower-card" data-flower-id="1" role="button" tabindex="0">
+            <div class="flower-art-stage">
+              <svg viewBox="0 0 100 120" class="flower-svg svg-rose">
+                <path d="M50,70 Q48,95 50,115" stroke="#22c55e" stroke-width="4" fill="none" stroke-linecap="round"/>
+                <path d="M48,90 Q30,85 36,75 Q46,78 48,90" fill="#16a34a"/>
+                <path d="M50,98 Q68,93 62,83 Q52,86 50,98" fill="#16a34a"/>
+                <circle cx="50" cy="45" r="24" fill="#fda4af" class="bloom-petal p1"/>
+                <circle cx="50" cy="45" r="18" fill="#f43f5e" class="bloom-petal p2"/>
+                <circle cx="50" cy="43" r="12" fill="#e11d48" class="bloom-petal p3"/>
+                <circle cx="50" cy="42" r="6" fill="#ffe4e6" class="bloom-petal p4"/>
+              </svg>
+            </div>
+            <span class="flower-name-tag">Rose 🌹</span>
+            <span class="flower-tap-hint">Tap to Bloom ✨</span>
+          </div>
+
+          <!-- Flower 2: Sunflower -->
+          <div class="garden-flower-card" data-flower-id="2" role="button" tabindex="0">
+            <div class="flower-art-stage">
+              <svg viewBox="0 0 100 120" class="flower-svg svg-sunflower">
+                <path d="M50,70 Q52,95 50,115" stroke="#22c55e" stroke-width="4" fill="none" stroke-linecap="round"/>
+                <path d="M50,95 Q70,90 64,80 Q54,83 50,95" fill="#16a34a"/>
+                <g class="sunflower-petals-group">
+                  <ellipse cx="50" cy="20" rx="6" ry="14" fill="#facc15" class="bloom-petal"/>
+                  <ellipse cx="50" cy="70" rx="6" ry="14" fill="#facc15" class="bloom-petal"/>
+                  <ellipse cx="25" cy="45" rx="14" ry="6" fill="#facc15" class="bloom-petal"/>
+                  <ellipse cx="75" cy="45" rx="14" ry="6" fill="#facc15" class="bloom-petal"/>
+                  <ellipse cx="32" cy="27" rx="7" ry="12" fill="#fbbf24" transform="rotate(-45 32 27)" class="bloom-petal"/>
+                  <ellipse cx="68" cy="27" rx="7" ry="12" fill="#fbbf24" transform="rotate(45 68 27)" class="bloom-petal"/>
+                  <ellipse cx="32" cy="63" rx="7" ry="12" fill="#fbbf24" transform="rotate(45 32 63)" class="bloom-petal"/>
+                  <ellipse cx="68" cy="63" rx="7" ry="12" fill="#fbbf24" transform="rotate(-45 68 63)" class="bloom-petal"/>
+                  <circle cx="50" cy="45" r="14" fill="#78350f"/>
+                </g>
+              </svg>
+            </div>
+            <span class="flower-name-tag">Sunflower 🌻</span>
+            <span class="flower-tap-hint">Tap to Bloom ✨</span>
+          </div>
+
+          <!-- Flower 3: Tulip -->
+          <div class="garden-flower-card" data-flower-id="3" role="button" tabindex="0">
+            <div class="flower-art-stage">
+              <svg viewBox="0 0 100 120" class="flower-svg svg-tulip">
+                <path d="M50,65 Q48,95 50,115" stroke="#22c55e" stroke-width="4" fill="none" stroke-linecap="round"/>
+                <path d="M48,85 Q28,75 35,65 Q45,70 48,85" fill="#16a34a"/>
+                <path d="M32,45 C32,25 68,25 68,45 C68,68 32,68 32,45 Z" fill="#c084fc" class="bloom-petal t1"/>
+                <path d="M40,45 C40,30 60,30 60,45 C60,62 40,62 40,45 Z" fill="#a855f7" class="bloom-petal t2"/>
+              </svg>
+            </div>
+            <span class="flower-name-tag">Tulip 🌷</span>
+            <span class="flower-tap-hint">Tap to Bloom ✨</span>
+          </div>
+
+          <!-- Flower 4: Cherry Blossom -->
+          <div class="garden-flower-card" data-flower-id="4" role="button" tabindex="0">
+            <div class="flower-art-stage">
+              <svg viewBox="0 0 100 120" class="flower-svg svg-sakura">
+                <path d="M50,70 Q52,95 50,115" stroke="#22c55e" stroke-width="4" fill="none" stroke-linecap="round"/>
+                <path d="M50,92 Q68,88 64,76 Q52,80 50,92" fill="#16a34a"/>
+                <g class="sakura-petals-group">
+                  <circle cx="50" cy="30" r="12" fill="#fbcfe8" class="bloom-petal"/>
+                  <circle cx="36" cy="40" r="12" fill="#fbcfe8" class="bloom-petal"/>
+                  <circle cx="64" cy="40" r="12" fill="#fbcfe8" class="bloom-petal"/>
+                  <circle cx="41" cy="56" r="12" fill="#fbcfe8" class="bloom-petal"/>
+                  <circle cx="59" cy="56" r="12" fill="#fbcfe8" class="bloom-petal"/>
+                  <circle cx="50" cy="45" r="7" fill="#f43f5e"/>
+                </g>
+              </svg>
+            </div>
+            <span class="flower-name-tag">Sakura 🌸</span>
+            <span class="flower-tap-hint">Tap to Bloom ✨</span>
+          </div>
+
+        </div>
+
+        <!-- Flower Message Modal / Card Box -->
+        <div class="flower-dialogue-card" id="flowerDialogueCard">
+          <div class="flower-dialogue-content">
+            <h3 class="flower-bloomed-title" id="flowerBloomedTitle">Ye phool meri Doremon ke liye 🌸</h3>
+            <p class="flower-bloomed-note" id="flowerBloomedNote">Kisi phool pe tap karke uski khushboo mehsus karo!</p>
+          </div>
+        </div>
+
+        <div class="garden-next-cta text-center">
+          <button class="btn-main glow-purple-btn" id="gardenNextBtn">
+            <span>Doremon Ki Gallery Dekho 📸</span>
+            <i data-lucide="arrow-down" class="inline-icon"></i>
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================================================== -->
+    <!-- SCENE 5: DOREMON PHOTO GALLERY (FOCUSED INDIVIDUAL POLAROIDS) -->
+    <!-- ============================================================== -->
+    <section class="scene-section gallery-scene" id="scene-gallery">
+      <div class="scene-header text-center">
+        <span class="scene-step-badge">Scene 05 • Polaroid Memories</span>
+        <h2 class="scene-title">Doremon Photo Gallery 📸</h2>
+        <p class="scene-subtitle">Meri sabse pyari dost ke unmissable moments! Click karke fullscreen me dekho.</p>
+      </div>
+
+      <!-- Polaroid Cards Grid with Real Photos & Captions -->
+      <div class="polaroid-gallery-wall" id="polaroidGalleryWall">
+        <!-- Populated from CONFIG.gallery -->
+      </div>
+
+      <!-- Quick uploader bar -->
+      <div class="gallery-helper-bar">
+        <span class="helper-text">
+          <i data-lucide="hand" class="inline-icon"></i> Kisi bhi photo pe click karke fullscreen me dekho!
+        </span>
+        <button class="btn-subtle" id="galleryCustomizeBtn">
+          <i data-lucide="camera" class="inline-icon"></i> Photos change karna hai?
+        </button>
+      </div>
+
+      <div class="gallery-next-cta text-center" style="margin-top:2.5rem;">
+        <button class="btn-main glow-pink-btn" id="galleryNextBtn">
+          <span>Ek Secret Gift Khologe? 🎁</span>
+          <i data-lucide="arrow-down" class="inline-icon"></i>
+        </button>
+      </div>
+    </section>
+
+    <!-- ============================================================== -->
+    <!-- SCENE 6: SECRET GIFT BOX 🎁 (INTERACTIVE 3D SURPRISE) -->
+    <!-- ============================================================== -->
+    <section class="scene-section gift-scene" id="scene-gift">
+      <div class="scene-ambient-glow glow-pink-center"></div>
+
+      <div class="gift-card-wrapper glass-card text-center">
+        <span class="scene-step-badge">Scene 06 • Special Surprise</span>
+        <h2 class="scene-title">A Secret Gift For Doremon 🎁</h2>
+        <p class="scene-subtitle">Doremon ki magic pocket se ek special surprise nikla hai! Gift box pe tap karo.</p>
+
+        <!-- 3D Interactive Animated Gift Box -->
+        <div class="gift-box-stage" id="giftBoxStage" role="button" tabindex="0" title="Click to open the gift box!">
+          <div class="gift-box-3d" id="giftBox3d">
+            <!-- Box Lid -->
+            <div class="gift-lid" id="giftLid">
+              <div class="gift-bow">🎀</div>
+              <div class="gift-lid-top"></div>
+            </div>
+            <!-- Box Body -->
+            <div class="gift-body">
+              <div class="gift-ribbon-v"></div>
+              <div class="gift-ribbon-h"></div>
+            </div>
+          </div>
+          <div class="gift-tap-cue" id="giftTapCue">
+            <span>✨ Tap Karo Gift Kholne Ke Liye ✨</span>
+          </div>
+        </div>
+
+        <!-- Revealed Secret Message & Friendship Pass -->
+        <div class="gift-revealed-card" id="giftRevealedCard">
+          <div class="gift-revealed-inner">
+            <span class="gift-sparkle-top">✨ SURPRISE! ✨</span>
+            <h3 class="gift-main-quote">
+              "Surprise! Tujhe manana tha, isliye ye chhota sa gift ❤️"
+            </h3>
+            
+            <div class="friendship-privilege-pass">
+              <div class="pass-header">
+                <span class="pass-bell">🔔</span>
+                <h4>DOREMON LIFETIME PRIVILEGE PASS</h4>
+              </div>
+              <ul class="pass-perks">
+                <li>☕ <strong>Unlimited Free Chai & Treats</strong> whenever you want!</li>
+                <li>📞 <strong>24/7 Rant & Gossip Hotline</strong> (Zero judgment guarantee)</li>
+                <li>🙈 <strong>100% Right to slap me</strong> whenever I say something dumb</li>
+                <li>💖 <strong>Lifetime Valid Friendship</strong> (No expiry date ever!)</li>
+              </ul>
+              <div class="pass-footer">
+                <span>Issued with Love to: <strong>Saumya (Meri Doremon)</strong></span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="gift-next-cta" id="giftNextCta">
+          <button class="btn-main glow-purple-btn" id="giftNextBtn">
+            <span>Tu itni special kyun hai? Dekho 🫶</span>
+            <i data-lucide="arrow-down" class="inline-icon"></i>
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================================================== -->
+    <!-- SCENE 7: REASONS WHY YOU ARE SPECIAL 🫶 (6 3D FLIP CARDS) -->
+    <!-- ============================================================== -->
+    <section class="scene-section special-scene" id="scene-special">
+      <div class="scene-header text-center">
+        <span class="scene-step-badge">Scene 07 • 6 Reasons</span>
+        <h2 class="scene-title">Reasons Why You Are Special 🫶</h2>
+        <p class="scene-subtitle">Cards pe tap karo aur dekho meri Doremon ke 6 super special secrets!</p>
+        <div class="unlocked-counter-pill">
+          <span>Cards Dekhe: </span>
+          <strong id="specialCardsUnlocked">0</strong><span> / 6</span>
+        </div>
+      </div>
+
+      <!-- 6 Interactive 3D Flip Cards Grid -->
+      <div class="special-cards-grid" id="specialCardsGrid">
+        <!-- Dynamically rendered from CONFIG.specialCards -->
+      </div>
+
+      <div class="special-footer-cta text-center">
+        <button class="btn-main glow-pink-btn" id="specialNextBtn">
+          <span>Ab ek aakhri sawal hai... 🥺</span>
+          <i data-lucide="arrow-down" class="inline-icon"></i>
+        </button>
+      </div>
+    </section>
+
+    <!-- ============================================================== -->
+    <!-- SCENE 8: THE FORGIVENESS QUESTION 🥺 (ANIMATED TEDDY WITH HEART) -->
+    <!-- ============================================================== -->
+    <section class="scene-section question-scene" id="scene-question">
+      <div class="scene-ambient-glow glow-pink-center"></div>
+
+      <div class="question-card glass-card text-center">
+        <span class="scene-step-badge">Scene 08 • The Big Question</span>
+
+        <!-- Interactive Animated Doremon/Teddy Character holding a Beating Heart -->
+        <div class="plea-character-stage">
+          <!-- Speech Bubble for Playful Pleading Dialogues -->
+          <div class="plea-speech-bubble" id="pleaSpeechBubble">
+            <span id="pleaSpeechText">Achha meri Doremon, ab kitna bhav khayegi? 😂</span>
+            <span class="bubble-tail"></span>
+          </div>
+
+          <div class="plea-character-art" id="pleaCharacterArt">
+            <svg viewBox="0 0 240 260" class="plea-svg" xmlns="http://www.w3.org/2000/svg">
+              <defs>
+                <radialGradient id="pleaFur" cx="50%" cy="40%" r="60%">
+                  <stop offset="0%" stop-color="#bae6fd" />
+                  <stop offset="70%" stop-color="#38bdf8" />
+                  <stop offset="100%" stop-color="#0284c7" />
+                </radialGradient>
+                <radialGradient id="pleaWhite" cx="50%" cy="50%" r="50%">
+                  <stop offset="0%" stop-color="#ffffff" />
+                  <stop offset="100%" stop-color="#f0f9ff" />
+                </radialGradient>
+                <radialGradient id="pleaHeart" cx="40%" cy="40%" r="60%">
+                  <stop offset="0%" stop-color="#ff758f" />
+                  <stop offset="60%" stop-color="#e11d48" />
+                  <stop offset="100%" stop-color="#9f1239" />
+                </radialGradient>
+              </defs>
+
+              <!-- Teddy/Doremon Ears -->
+              <circle cx="60" cy="65" r="26" fill="url(#pleaFur)"/>
+              <circle cx="60" cy="65" r="14" fill="#ffffff"/>
+              <circle cx="180" cy="65" r="26" fill="url(#pleaFur)"/>
+              <circle cx="180" cy="65" r="14" fill="#ffffff"/>
+
+              <!-- Body -->
+              <ellipse cx="120" cy="180" rx="60" ry="55" fill="url(#pleaFur)"/>
+              <ellipse cx="120" cy="185" rx="38" ry="34" fill="url(#pleaWhite)"/>
+
+              <!-- Magic 4D Pocket on Belly -->
+              <path d="M100,185 Q120,205 140,185 Z" fill="#ffffff" stroke="#0284c7" stroke-width="2"/>
+
+              <!-- Head -->
+              <circle cx="120" cy="105" r="58" fill="url(#pleaFur)"/>
+              <ellipse cx="120" cy="115" rx="45" ry="40" fill="url(#pleaWhite)"/>
+              
+              <!-- Red Cute Nose -->
+              <circle cx="120" cy="105" r="8" fill="#ef4444"/>
+              <circle cx="118" cy="103" r="2.5" fill="#ffffff"/>
+
+              <!-- Mouth line -->
+              <path id="pleaMouth" d="M120,113 L120,130 Q110,138 98,130 M120,130 Q130,138 142,130" stroke="#0f172a" stroke-width="2.2" fill="none" stroke-linecap="round"/>
+
+              <!-- Doraemon Whiskers -->
+              <line x1="85" y1="112" x2="60" y2="108" stroke="#0f172a" stroke-width="1.8"/>
+              <line x1="85" y1="120" x2="58" y2="120" stroke="#0f172a" stroke-width="1.8"/>
+              <line x1="85" y1="128" x2="62" y2="132" stroke="#0f172a" stroke-width="1.8"/>
+              <line x1="155" y1="112" x2="180" y2="108" stroke="#0f172a" stroke-width="1.8"/>
+              <line x1="155" y1="120" x2="182" y2="120" stroke="#0f172a" stroke-width="1.8"/>
+              <line x1="155" y1="128" x2="178" y2="132" stroke="#0f172a" stroke-width="1.8"/>
+
+              <!-- Blushing Cheeks -->
+              <ellipse cx="85" cy="125" rx="10" ry="6" fill="#fb7185" opacity="0.6"/>
+              <ellipse cx="155" cy="125" rx="10" ry="6" fill="#fb7185" opacity="0.6"/>
+
+              <!-- Eyes: Normal / Pleading -->
+              <g id="pleaEyesNormal">
+                <ellipse cx="106" cy="90" rx="9" ry="12" fill="#ffffff" stroke="#0f172a" stroke-width="2"/>
+                <ellipse cx="134" cy="90" rx="9" ry="12" fill="#ffffff" stroke="#0f172a" stroke-width="2"/>
+                <circle cx="109" cy="92" r="3.5" fill="#0f172a"/>
+                <circle cx="131" cy="92" r="3.5" fill="#0f172a"/>
+              </g>
+
+              <!-- Eyes: Sad Crying (Triggered on "Bilkul nahi") -->
+              <g id="pleaEyesSad" style="display:none;">
+                <ellipse cx="106" cy="90" rx="9" ry="12" fill="#ffffff" stroke="#0f172a" stroke-width="2"/>
+                <ellipse cx="134" cy="90" rx="9" ry="12" fill="#ffffff" stroke="#0f172a" stroke-width="2"/>
+                <circle cx="109" cy="94" r="4" fill="#0f172a"/>
+                <circle cx="131" cy="94" r="4" fill="#0f172a"/>
+                <!-- Flowing cute tears -->
+                <path d="M100,102 Q103,115 101,120" stroke="#38bdf8" stroke-width="3" fill="none" class="tear-flow"/>
+                <path d="M139,102 Q136,115 138,120" stroke="#38bdf8" stroke-width="3" fill="none" class="tear-flow"/>
+              </g>
+
+              <!-- Eyes: Super Happy celebrating (Triggered on "Maaf kiya") -->
+              <g id="pleaEyesHappy" style="display:none;">
+                <path d="M98,92 Q106,80 114,92" stroke="#0f172a" stroke-width="3.5" fill="none" stroke-linecap="round"/>
+                <path d="M126,92 Q134,80 142,92" stroke="#0f172a" stroke-width="3.5" fill="none" stroke-linecap="round"/>
+              </g>
+
+              <!-- Holding Beating Heart in Paws -->
+              <g class="holding-heart-group">
+                <path id="pleaBeatingHeart" class="pulsing-heart" d="M120,165 C120,150 100,135 85,150 C70,165 85,185 120,205 C155,185 170,165 155,150 C140,135 120,150 120,165 Z" fill="url(#pleaHeart)"/>
+                <!-- White Paws -->
+                <circle cx="85" cy="170" r="14" fill="#ffffff" stroke="#0284c7" stroke-width="2"/>
+                <circle cx="155" cy="170" r="14" fill="#ffffff" stroke="#0284c7" stroke-width="2"/>
+              </g>
+            </svg>
+          </div>
+        </div>
+
+        <h3 class="question-main-text">
+          Maaf bhi kar de apne is pagal dost ko... 🥺
+        </h3>
+
+        <!-- Interactive Choice Buttons -->
+        <div class="question-buttons-row">
+          <button class="btn-forgive pulse-glow-btn" id="forgiveYesBtn">
+            <span class="btn-emoji">❤️</span>
+            <span class="btn-text">Achha theek hai, maaf kiya ❤️</span>
+            <span class="btn-halo"></span>
+          </button>
+
+          <button class="btn-deny-playful" id="forgiveNoBtn">
+            <span class="btn-emoji">😤</span>
+            <span class="btn-text" id="denyButtonLabel">Bilkul nahi 😤</span>
+          </button>
+        </div>
+
+        <div class="plea-counter-text" id="pleaCounterText" style="display:none;"></div>
+      </div>
+    </section>
+
+    <!-- ============================================================== -->
+    <!-- GRAND FINALE 🎉 (TRIGGERED WHEN SHE CLICKS MAAF KIYA) -->
+    <!-- ============================================================== -->
+    <section class="scene-section finale-scene" id="scene-finale">
+      <div class="finale-card glass-card text-center">
+        <!-- Floating Celebratory Crown Badge -->
+        <div class="finale-badge">
+          <span>👑 Official Best Friends Forever 💖</span>
+        </div>
+
+        <!-- SAUMYA'S CELEBRATION PHOTO FRAME -->
+        <div class="finale-photo-wrapper">
+          <div class="celebration-sparkles-orbit">
+            <span class="orb-item o1">✨</span>
+            <span class="orb-item o2">💖</span>
+            <span class="orb-item o3">🌸</span>
+            <span class="orb-item o4">🎉</span>
+            <span class="orb-item o5">⭐</span>
+          </div>
+
+          <div class="finale-portrait-frame">
+            <img src="assets/images/finale-saumya.jpg" alt="Saumya Smiling" id="finalePhotoImg" class="finale-img" onerror="this.onerror=null; this.src='assets/images/hero-saumya.jpg';">
+            <div class="finale-bell-stamp">🔔</div>
+          </div>
+        </div>
+
+        <h2 class="finale-heading">
+          YAYYYYY! ❤️🥹 <br>
+          <span class="highlight-doremon">Thank you meri Doremon!</span>
+        </h2>
+
+        <div class="finale-message-box">
+          <p>Ab gussa chhod aur ek cute si smile kar de.</p>
+          <p>Tu khush rahe, haste rahe aur hamesha aise hi muskurati rahe.</p>
+          <p class="highlight-pink">Aur haan, agli baar ye pagal kuch galti kare toh daant dena, par itna naraz mat hona.</p>
+          <p class="final-love-tag">Love you meri Doremon! ❤️🫂</p>
+        </div>
+
+        <!-- Official Friendship Reunited Seal -->
+        <div class="friendship-reunion-cert">
+          <div class="cert-pattern-border">
+            <div class="cert-top-row">
+              <span class="cert-bell">🔔</span>
+              <h4>OFFICIAL DOREMON FRIENDSHIP SEAL</h4>
+              <span class="cert-heart">❤️</span>
+            </div>
+            <p class="cert-text">
+              Certified that <strong class="cert-name" id="certFriendName">Saumya (Meri Doremon)</strong> has officially forgiven her pagal dost. Dosti permanent hai aur lifetime chalegi!
+            </p>
+            <div class="cert-date-row">
+              <span id="certSealDate">Status: Reunited with Smiles</span>
+              <span>Validity: Forever & Beyond</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Finale Action Buttons -->
+        <div class="finale-actions">
+          <button class="btn-main glow-pink-btn" id="virtualHugBtn">
+            <span class="btn-emoji">🤗</span>
+            <span>Virtual Hug Bhejo</span>
+          </button>
+
+          <button class="btn-subtle" id="replayStoryBtn">
+            <span class="btn-emoji">💗</span>
+            <span>Phir se dekhna hai?</span>
+          </button>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ============================================================== -->
+  <!-- MODALS & FULLSCREEN LIGHTBOXES -->
+  <!-- ============================================================== -->
+
+  <!-- 1. FULLSCREEN PHOTO VIEWER MODAL -->
+  <div class="modal-backdrop" id="photoLightboxModal" aria-hidden="true" role="dialog">
+    <div class="lightbox-dialog">
+      <button class="lightbox-close-btn" id="closeLightboxBtn" aria-label="Close photo view">&times;</button>
+      
+      <div class="lightbox-content">
+        <div class="lightbox-image-wrap">
+          <img src="" alt="Saumya Memory" id="lightboxImg" class="lightbox-img">
+        </div>
+        
+        <div class="lightbox-details">
+          <div class="lightbox-badge-row">
+            <span class="lightbox-tag">📸 Yadein</span>
+            <span class="lightbox-date" id="lightboxDate">Date</span>
+          </div>
+
+          <h3 class="lightbox-caption" id="lightboxCaption">Caption</h3>
+          <p class="lightbox-note" id="lightboxNote">Memory Story</p>
+
+          <div class="lightbox-reaction-bar">
+            <button class="btn-like-memory" id="likeMemoryBtn">
+              <span class="heart-icon">❤️</span>
+              <span id="likeMemoryLabel">Ye photo bahut pyaari hai!</span>
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 2. INSTANT PHOTO & PERSONALIZATION MODAL -->
+  <div class="modal-backdrop" id="customizerModal" aria-hidden="true" role="dialog">
+    <div class="customizer-dialog glass-card">
+      <button class="lightbox-close-btn" id="closeCustomizerModalBtn" aria-label="Close dialog">&times;</button>
+      
+      <div class="customizer-head">
+        <span class="customizer-icon">📸</span>
+        <h3>Saumya Ki Photos & Name Badalna</h3>
+        <p>Aap direct yahan se bhi photos upload kar sakte hain!</p>
+      </div>
+
+      <div class="customizer-body">
+        <div class="customizer-field">
+          <label for="cfgFriendName">Her Real Name:</label>
+          <input type="text" id="cfgFriendName" placeholder="e.g. Saumya">
+        </div>
+
+        <div class="customizer-field">
+          <label for="cfgNickname">Her Nickname:</label>
+          <input type="text" id="cfgNickname" placeholder="e.g. Doremon">
+        </div>
+
+        <div class="customizer-field">
+          <label for="cfgSenderName">Your Name:</label>
+          <input type="text" id="cfgSenderName" placeholder="e.g. Tera pagal dost">
+        </div>
+
+        <!-- Photo Slots Management -->
+        <h4 class="slots-header">📸 Photo Slots:</h4>
+        <div class="photo-slots-scroll" id="photoSlotsScroll">
+          <!-- Dynamically populated slots with preview & local file input -->
+        </div>
+
+        <div class="customizer-tip">
+          <p>
+            <strong>💡 Pro-Tip:</strong> Photos ko <code>assets/images/</code> folder mein <code>hero-saumya.jpg</code>, <code>doremon.jpg</code>, <code>saumya-1.jpg</code> naam se save karein!
+          </p>
+        </div>
+      </div>
+
+      <div class="customizer-foot">
+        <button class="btn-subtle" id="resetCustomizerBtn">Reset Default</button>
+        <button class="btn-main glow-pink-btn" id="saveCustomizerBtn">Save & Apply Changes</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- 3. FULLSCREEN VIRTUAL HUG OVERLAY -->
+  <div class="hug-fullscreen-overlay" id="hugFullscreenOverlay">
+    <div class="hug-modal-box">
+      <span class="hug-big-emoji">🫂</span>
+      <h2>WARMEST VIRTUAL HUG TO SAUMYA!</h2>
+      <p>Gussa khatam, smile wapas! Best friends forever! ❤️✨</p>
+    </div>
+  </div>
+
+  <!-- Background Audio Player (Optional custom MP3, else Synth Music Box generates melody) -->
+  <audio id="bgAudioPlayer" preload="auto" loop></audio>
+
+  <!-- Application Script -->
+  <script src="script.js"></script>
+</body>
+</html>
