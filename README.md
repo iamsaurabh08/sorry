@@ -102,14 +102,13 @@ Aapko sirf **3 ya 4 photos** chahiye:
 
 | Filename | Kahan Dikhayi Degi? |
 | :--- | :--- |
-| **`hero-saumya.jpg`** | **Scene 1 Opening Screen**: Glowing frame ke andar Saumya ki main photo |
-| **`doremon.jpg`** | **Scene 5 Special Polaroid**: *"Meri Doremon ❤️"* golden bell wali photo |
-| **`saumya-1.jpg`** | **Gallery Photo 1**: *"Ye wali yaad hai? 😂"* |
-| **`saumya-2.jpg`** | **Gallery Photo 2**: *"Ye moment toh kabhi nahi bhool sakta ❤️"* |
-| **`saumya-3.jpg`** | **Gallery Photo 3**: *"Hamesha aise hi muskurati rehna 🌸"* |
-| **`finale-saumya.jpg`**| **Scene 8 Finale Screen**: Celebration frame me smiling photo |
+| **`photo_2026-11-02_19-45-15.jpg`** | **Scene 1 Opening Screen & Scene 8 Finale**: Glowing frame ke andar Saumya ki main photo |
+| **`photo_2026-11-02_19-45-37.jpg`** | **Scene 5 Special Polaroid**: *"Meri Doremon ❤️"* golden bell wali photo |
+| **`photo_2026-11-02_19-46-32.jpg`** | **Gallery Photo 2**: *"Ye wali yaad hai? 😂"* |
+| **`photo_2026-11-02_19-50-10.jpg`** | **Gallery Photo 3**: *"Ye moment toh kabhi nahi bhool sakta ❤️"* |
+| **`photo_2026-11-02_19-57-29.jpg`** | **Gallery Photo 4**: *"Hamesha aise hi muskurati rehna 🌸"* |
 
-Photos ko **`assets/images/`** folder me copy karein, ya website ke top right par **"Photos Badalna"** button dabakar direct upload karein!
+Photos **`images/`** folder mein rakhi hui hain, ya website ke top right par **"Photos Badalna"** button dabakar bhi direct update kar sakte hain!
 
 ---
 

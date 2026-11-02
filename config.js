@@ -8,11 +8,19 @@
 
 const CONFIG = {
   // Best Friend's Name / Nickname
-  friendName: "Bestie", // e.g., "Aisha", "Priya", "Simran", "Chirkut", "Favorite Human"
-  senderName: "Yours Truly", // e.g., "Your idiot best friend", "Rahul", etc.
+  friendName: "Saumya",
+  nickname: "Doremon",
+  senderName: "Tera Pagal Dost",
 
   // Website Header Title
-  websiteTitle: "For My Favorite Person ❤️",
+  websiteTitle: "Ek Chhoti Si Duniya Meri Doremon Ke Liye ❤️",
+
+  // Photos Configuration (images/ folder)
+  photos: {
+    hero: "images/photo_2026-11-02_19-45-15.jpg",
+    doremonPolaroid: "images/photo_2026-11-02_19-45-37.jpg",
+    finale: "images/photo_2026-11-02_19-45-15.jpg",
+  },
 
   // Audio Configuration
   audio: {
@@ -66,40 +74,28 @@ const CONFIG = {
   // Chapter 3: Our Little World (Polaroid Gallery)
   gallery: [
     {
-      image: "https://images.unsplash.com/photo-1529156069898-49953e39b3ac?auto=format&fit=crop&w=800&q=80",
-      caption: "Laughter that cures everything",
-      date: "A Day to Remember",
-      note: "That day we laughed until our stomachs hurt and completely forgot why we were ever stressed.",
+      image: "images/photo_2026-11-02_19-45-37.jpg",
+      caption: "Meri Doremon ❤️",
+      date: "Forever Favorite",
+      note: "Duniya ki sabse cute, pyaari aur special Doremon. Jiske bina meri har ek baat bilkul adhuri hai!",
     },
     {
-      image: "https://images.unsplash.com/photo-1517841905240-472988babdf9?auto=format&fit=crop&w=800&q=80",
-      caption: "Endless Chai & Late Talks",
-      date: "Midnight Conversations",
-      note: "Talking about everything and nothing until 3 AM. No one gets my chaotic mind like you do.",
+      image: "images/photo_2026-11-02_19-46-32.jpg",
+      caption: "Ye wali yaad hai? 😂",
+      date: "Unfiltered Smile",
+      note: "Jab hum bina kisi wajah ke itna hase the ki pet me dard hone laga tha! Aisi smiles hi sabse real hoti hain.",
     },
     {
-      image: "https://images.unsplash.com/photo-1511632765486-a01980e01a18?auto=format&fit=crop&w=800&q=80",
-      caption: "Partner in all crimes",
-      date: "Unfiltered Us",
-      note: "From spontaneous food runs to being absolute goofballs in public without caring who's watching.",
-    },
-    {
-      image: "https://images.unsplash.com/photo-1492684223066-81342ee5ff30?auto=format&fit=crop&w=800&q=80",
-      caption: "Golden hour, golden soul",
+      image: "images/photo_2026-11-02_19-50-10.jpg",
+      caption: "Ye moment toh kabhi nahi bhool sakta ❤️",
       date: "Pure Magic",
-      note: "Your energy is pure sunshine. Never let anyone (especially not me) dim that radiant light.",
+      note: "Duniya ki saari problems ek taraf, aur teri-meri dosti ek taraf. Tujhse baat karke saara mood 2 minute me fresh ho jata hai.",
     },
     {
-      image: "https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=800&q=80",
-      caption: "My forever safe place",
-      date: "Through Thick & Thin",
-      note: "Whenever the world gets overwhelming, just one text from you makes everything feel alright.",
-    },
-    {
-      image: "https://images.unsplash.com/photo-1543807535-eceef0bc6599?auto=format&fit=crop&w=800&q=80",
-      caption: "Two weirdos, one wavelength",
-      date: "Soul Connection",
-      note: "You don't just know my stories; you've lived them with me. I wouldn't trade this bond for anything.",
+      image: "images/photo_2026-11-02_19-57-29.jpg",
+      caption: "Hamesha aise hi muskurati rehna 🌸",
+      date: "Best Friends Forever",
+      note: "Chahe hum kitna bhi lad lein ya gussa ho jayein, end me hamesha aise hi ek saath rehna hai hume!",
     },
   ],
 

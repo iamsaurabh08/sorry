@@ -25,12 +25,12 @@ const CONFIG = {
     songTitle: "Doremon Ambient Lullaby",
   },
 
-  // Photos Configuration (assets/images/ folder)
+  // Photos Configuration (images/ folder)
   // NOT dependent on many photos together - focused on Saumya's individual photos!
   photos: {
-    hero: "assets/images/hero-saumya.jpg",
-    doremonPolaroid: "assets/images/doremon.jpg",
-    finale: "assets/images/finale-saumya.jpg",
+    hero: "images/photo_2026-11-02_19-45-15.jpg",
+    doremonPolaroid: "images/photo_2026-11-02_19-45-37.jpg",
+    finale: "images/photo_2026-11-02_19-45-15.jpg",
   },
 
   // Scene 2: Letter Paragraphs (Natural Hinglish)
@@ -102,8 +102,8 @@ const CONFIG = {
   gallery: [
     {
       id: "doremon",
-      image: "assets/images/doremon.jpg",
-      fallback: "https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=800&q=80",
+      image: "images/photo_2026-11-02_19-45-37.jpg",
+      fallback: "images/photo_2026-11-02_19-45-37.jpg",
       caption: "Meri Doremon ❤️",
       date: "Forever Favorite",
       isSpecial: true,
@@ -111,8 +111,8 @@ const CONFIG = {
     },
     {
       id: "mem1",
-      image: "assets/images/saumya-1.jpg",
-      fallback: "https://images.unsplash.com/photo-1517841905240-472988babdf9?auto=format&fit=crop&w=800&q=80",
+      image: "images/photo_2026-11-02_19-46-32.jpg",
+      fallback: "images/photo_2026-11-02_19-46-32.jpg",
       caption: "Ye wali yaad hai? 😂",
       date: "Unfiltered Smile",
       isSpecial: false,
@@ -120,8 +120,8 @@ const CONFIG = {
     },
     {
       id: "mem2",
-      image: "assets/images/saumya-2.jpg",
-      fallback: "https://images.unsplash.com/photo-1529156069898-49953e39b3ac?auto=format&fit=crop&w=800&q=80",
+      image: "images/photo_2026-11-02_19-50-10.jpg",
+      fallback: "images/photo_2026-11-02_19-50-10.jpg",
       caption: "Ye moment toh kabhi nahi bhool sakta ❤️",
       date: "Pure Magic",
       isSpecial: false,
@@ -129,8 +129,8 @@ const CONFIG = {
     },
     {
       id: "mem3",
-      image: "assets/images/saumya-3.jpg",
-      fallback: "https://images.unsplash.com/photo-1543807535-eceef0bc6599?auto=format&fit=crop&w=800&q=80",
+      image: "images/photo_2026-11-02_19-57-29.jpg",
+      fallback: "images/photo_2026-11-02_19-57-29.jpg",
       caption: "Hamesha aise hi muskurati rehna 🌸",
       date: "Best Friends Forever",
       isSpecial: false,
@@ -620,6 +620,17 @@ document.addEventListener('DOMContentLoaded', () => {
   if (storedConfig) {
     try {
       const parsed = JSON.parse(storedConfig);
+      // Migrate from outdated photo paths so new images/ paths take effect immediately
+      if (parsed.photos) {
+        if (Object.values(parsed.photos).some((p) => typeof p === 'string' && (p.includes('assets/images/') || p.includes('unsplash')))) {
+          parsed.photos = Object.assign({}, window.CONFIG.photos);
+        }
+      }
+      if (parsed.gallery && Array.isArray(parsed.gallery)) {
+        if (parsed.gallery.some((g) => g.image && (g.image.includes('assets/images/') || g.image.includes('unsplash')))) {
+          parsed.gallery = window.CONFIG.gallery.slice(0, 4);
+        }
+      }
       appConfig = Object.assign({}, appConfig, parsed);
     } catch (e) {}
   }
@@ -796,7 +807,7 @@ document.addEventListener('DOMContentLoaded', () => {
     heroPortraitCard.addEventListener('click', () => {
       soundEngine.playChime();
       openFullscreenModal(
-        appConfig.photos?.hero || 'assets/images/hero-saumya.jpg',
+        appConfig.photos?.hero || 'images/photo_2026-11-02_19-45-15.jpg',
         `${appConfig.friendName} • Meri ${appConfig.nickname} ❤️`,
         'Sabse Pyaari Smile',
         'Duniya ki sabse khoobsurat aur pyari dost jiski ek smile saara din theek kar sakti hai!'
@@ -1195,9 +1206,9 @@ document.addEventListener('DOMContentLoaded', () => {
     if (!photoSlotsScroll) return;
 
     const allSlots = [
-      { id: 'hero', label: 'Main Hero Photo (Opening Screen)', current: appConfig.photos?.hero || 'assets/images/hero-saumya.jpg' },
-      { id: 'doremon', label: 'Special "Meri Doremon ❤️" Polaroid', current: appConfig.photos?.doremonPolaroid || 'assets/images/doremon.jpg' },
-      { id: 'finale', label: 'Finale Celebration Screen Photo', current: appConfig.photos?.finale || 'assets/images/finale-saumya.jpg' },
+      { id: 'hero', label: 'Main Hero Photo (Opening Screen)', current: appConfig.photos?.hero || 'images/photo_2026-11-02_19-45-15.jpg' },
+      { id: 'doremon', label: 'Special "Meri Doremon ❤️" Polaroid', current: appConfig.photos?.doremonPolaroid || 'images/photo_2026-11-02_19-45-37.jpg' },
+      { id: 'finale', label: 'Finale Celebration Screen Photo', current: appConfig.photos?.finale || 'images/photo_2026-11-02_19-45-15.jpg' },
       ...(appConfig.gallery || []).map((g, i) => ({
         id: `gal_${i}`,
         label: `Gallery Photo #${i + 1} (${g.caption})`,
